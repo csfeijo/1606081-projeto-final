@@ -9,7 +9,7 @@ Conteúdo das aulas:
 [X] Criação do REPO
 [X] Criação da React APP
 [X] Configuração do Ambiente (eslint e vscode settings)
-[X] Remoção do não necessário
+[X] Remoção de arquivos desnecessários
 [X] Setup do [TailwindCSS](https://tailwindcss.com/docs/guides/create-react-app)
 [X] Setup do Plugin do TailwindCSS (Tailwind CSS IntelliSense)
 [X] Hello World com Tailwind
