@@ -14,11 +14,27 @@ Conteúdo das aulas:
 [X] Setup do Plugin do TailwindCSS (Tailwind CSS IntelliSense)
 [X] Hello World com Tailwind
 
+## Aula 02
+[X] Review do básico sobre Tailwind
+[X] Frameworks CSS Tailwind Based (Flowbit, Primer, Preline)
+[X] PrimeReact & PrimeIcons
+[X] Construção do Menubar do Projeto
+[X] Enunciado do Exercício
+
+
 ---
 ## Links úteis
 ### Videos Interessantes:
 * [Recriei a interface do Spotify usando Tailwind](https://www.youtube.com/watch?v=YVI-q3idGiM)
 * [Recriando o Notion com React (editor funcionando!)](https://www.youtube.com/watch?v=-SDxID3BS4I)
+
+## Frameworks de Mercado
+* [PrimeReact](https://primereact.com/)
+* [Flowbite](https://flowbite.com/)
+* [Preline](https://preline.co/)
+* [Flowbite para React](https://www.flowbite-react.com/)
+* [Primer - Github](https://primer.style/design/)
+* [Carbon UI - IBM](https://carbondesignsystem.com/)
 
 ### Issues
 * [VSCode Settings dando erro de Schema](https://bobbyhadz.com/blog/unable-to-load-schema-from-vscode-cannot-open)
