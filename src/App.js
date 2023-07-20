@@ -1,56 +1,30 @@
 import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { PrimeReactProvider } from 'primereact/api'
-import { Button } from 'primereact/button'
-
-import { Menubar } from 'primereact/menubar'
-import logo from './assets/img/logo-tt.png'
+import Menu from './Components/Menu'
+import Departamentos from './Pages/Departamentos'
 
 
 const App = () => {
-
-  const menuItems = [
-    {
-      label: 'Departamentos',
-      icon: 'pi pi-users',
-      items: [
-        {
-          label: 'Listar',
-          icon: 'pi pi-list',
-          command: () => {
-            alert('Listar')
-          }
-        },
-        {
-          separator: true
-        },
-        {
-          label: 'Adicionar',
-          icon: 'pi pi-plus'
-        }
-      ]
-    },
-  ]
-  const start = <img src={logo} className='w-6 mr-4'/>
-
   return (
     <PrimeReactProvider>
-      {/* 
-      Exercicio: extraia a estrutura do menu por completo
-      para um componente Menu (src/components/Menu) 
-      */}
-      <Menubar model={menuItems} start={start}/>
+      <BrowserRouter>
+        <Menu/>
+        <div className='container mx-auto'>
+          <Routes>
+            <Route path='/'>
+              <Route index element={<h1>Bem vindo</h1>}/>
 
+              <Route path='departamentos'>
+                <Route index element={<Departamentos/>} />
+                <Route path='new' element={<h1>Cadastro de Departamento</h1>} />
+              </Route>
 
-      <div className='container mx-auto'>
-        <h1>Bem vindo</h1>
-        <Button 
-          label='Botão 1' 
-          icon='pi pi-user'
-          iconPos='right'
-        />
-      </div>
-
-      
+              <Route path="*" element={<h1>Not Found</h1>}/>
+            </Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
     </PrimeReactProvider>
   )
 }

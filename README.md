@@ -6,20 +6,26 @@ Aplicação em ReactJS utilizando API NodeJS com Banco de Dados MySQL toda imple
 Conteúdo das aulas:
 
 ## Aula 01
-[X] Criação do REPO
-[X] Criação da React APP
-[X] Configuração do Ambiente (eslint e vscode settings)
-[X] Remoção de arquivos desnecessários
-[X] Setup do [TailwindCSS](https://tailwindcss.com/docs/guides/create-react-app)
-[X] Setup do Plugin do TailwindCSS (Tailwind CSS IntelliSense)
-[X] Hello World com Tailwind
+- [X] Criação do REPO
+- [X] Criação da React APP
+- [X] Configuração do Ambiente (eslint e vscode settings)
+- [X] Remoção de arquivos desnecessários
+- [X] Setup do [TailwindCSS](https://tailwindcss.com/docs/guides/create-react-app)
+- [X] Setup do Plugin do TailwindCSS (Tailwind CSS IntelliSense)
+- [X] Hello World com Tailwind
 
 ## Aula 02
-[X] Review do básico sobre Tailwind
-[X] Frameworks CSS Tailwind Based (Flowbit, Primer, Preline)
-[X] PrimeReact & PrimeIcons
-[X] Construção do Menubar do Projeto
-[X] Enunciado do Exercício
+- [X] Review do básico sobre Tailwind
+- [X] Frameworks CSS Tailwind Based (Flowbit, Primer, Preline)
+- [X] PrimeReact & PrimeIcons
+- [X] Construção do Menubar do Projeto
+- [X] Enunciado do Exercício
+
+## Aula 03
+- [X] Correção do exercício (Componente Menu)
+- [X] Rotas Base da Aplicação
+- [X] Construção da Page de Listagem
+- [X] Mock dos departamentos
 
 
 ---
