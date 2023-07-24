@@ -27,12 +27,21 @@ Conteúdo das aulas:
 - [X] Construção da Page de Listagem
 - [X] Mock dos departamentos
 
+## Aula 04
+- [X] Correção exercício
+- [X] Cadastro do Departamento (apenas UI)
+- [X] Chamada de API na listagem
+- [X] CORS
+
+## Aula 05
+
 
 ---
 ## Links úteis
 ### Videos Interessantes:
 * [Recriei a interface do Spotify usando Tailwind](https://www.youtube.com/watch?v=YVI-q3idGiM)
 * [Recriando o Notion com React (editor funcionando!)](https://www.youtube.com/watch?v=-SDxID3BS4I)
+* [CORS no Express](https://expressjs.com/en/resources/middleware/cors.html#configuring-cors)
 
 ## Frameworks de Mercado
 * [PrimeReact](https://primereact.com/)
@@ -41,6 +50,7 @@ Conteúdo das aulas:
 * [Flowbite para React](https://www.flowbite-react.com/)
 * [Primer - Github](https://primer.style/design/)
 * [Carbon UI - IBM](https://carbondesignsystem.com/)
+* [React Hook Form](https://www.react-hook-form.com/)
 
 ### Issues
 * [VSCode Settings dando erro de Schema](https://bobbyhadz.com/blog/unable-to-load-schema-from-vscode-cannot-open)

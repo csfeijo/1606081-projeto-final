@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { PrimeReactProvider } from 'primereact/api'
 import Menu from './Components/Menu'
 import Departamentos from './Pages/Departamentos'
-
+import FormDepartamentos from './Pages/FormDepartamentos'
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
 
               <Route path='departamentos'>
                 <Route index element={<Departamentos/>} />
-                <Route path='new' element={<h1>Cadastro de Departamento</h1>} />
+                <Route path='new' element={<FormDepartamentos/>} />
               </Route>
 
               <Route path="*" element={<h1>Not Found</h1>}/>
