@@ -34,7 +34,11 @@ Conteúdo das aulas:
 - [X] CORS
 
 ## Aula 05
-
+- [X] Correção do exercício
+- [X] Modal de Exclusão
+- [X] Toast de Exclusão
+- [X] Chamada da API de Exclusão
+- [X] Ordenação de Tabela
 
 ---
 ## Links úteis

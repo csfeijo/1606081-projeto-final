@@ -4,7 +4,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './index.css'
 // Theme
-import 'primereact/resources/themes/lara-light-indigo/theme.css'
+import 'primereact/resources/themes/lara-light-blue/theme.css'
 // core
 import 'primereact/resources/primereact.min.css'
 // icons
