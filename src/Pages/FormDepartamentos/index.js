@@ -1,9 +1,12 @@
 import React, { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom' 
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { Message } from 'primereact/message'
+import { insertDepartamento } from '../../services/departamentos'
 
 const FormDepartamentos = () => {
+  const navigate = useNavigate()
   // Configura os states
   const [nome, setNome] = useState('')
   const [erroNome, setErroNome] = useState(false)
@@ -40,8 +43,23 @@ const FormDepartamentos = () => {
     return true
   }
 
+  const createDepartamento = async () => {
+    try {
+      await insertDepartamento({ nome, sigla })
+      navigate('/departamentos')
+    } catch (e) {
+      const { code } = e.response.data.exception
+
+      if (code === 'ER_DUP_ENTRY') {
+        setErro('Registro duplicado na base de dados.')
+      } else {
+        setErro('Erro na inserção do registro.')
+      }
+    }
+  }
+
   return (
-    <>     
+    <>
       <h1 className='text-xl my-6'>
         <i className='pi pi-plus mr-4'/>
         Cadastro de Departamentos
@@ -83,7 +101,9 @@ const FormDepartamentos = () => {
           icon='pi pi-check'
           className='!mr-4'
           onClick={() => {
-            formValidate()
+            if(formValidate()) {
+              createDepartamento()
+            }
           }}
         />
 
