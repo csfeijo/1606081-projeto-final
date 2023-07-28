@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom' 
+import { useNavigate, useParams } from 'react-router-dom' 
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { Message } from 'primereact/message'
 import { insertDepartamento } from '../../services/departamentos'
 
 const FormDepartamentos = () => {
+  const { id_departamento } = useParams()
+
   const navigate = useNavigate()
   // Configura os states
   const [nome, setNome] = useState('')
@@ -62,7 +64,7 @@ const FormDepartamentos = () => {
     <>
       <h1 className='text-xl my-6'>
         <i className='pi pi-plus mr-4'/>
-        Cadastro de Departamentos
+        {id_departamento ? 'Edição' : 'Cadastro' } de Departamentos
       </h1>
     
       <div className='flex mt-12'>

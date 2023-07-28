@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 import { ProgressBar } from 'primereact/progressbar'
@@ -7,8 +8,8 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog'
 import { Toast } from 'primereact/toast'
 import getDepartamentos, { deleteDepartamento } from '../../services/departamentos'
 
-
 const Departamentos = () => {
+  const navigate = useNavigate()
   const toast = useRef(null)
   const [departamentos, setDepartamentos] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -96,32 +97,41 @@ const Departamentos = () => {
           field='sigla'
           sortable
         />
+
         <Column
           body={(depto) => (
-            <Button 
-              icon='pi pi-trash'
-              severity='danger'
-              rounded
-              onClick={() => {
+            <span className='p-buttonset'>
+              <Button
+                icon='pi pi-pencil'
+                severity='warning'
+                onClick={() => {
+                  navigate(`/departamentos/edit/${depto.id_departamento}`)
+                }}
+              />
+              <Button 
+                icon='pi pi-trash'
+                severity='danger'
+                onClick={() => {
 
-                confirmDialog({
-                  header: 'Exclusão de Departamento',
-                  message: `Você deseja remover ${depto.nome}?`,
-                  icon: 'pi pi-info-circle',
-                  draggable: false,
-                  acceptLabel: 'Sim',
-                  acceptClassName: 'p-button-danger',
-                  acceptIcon: 'pi pi-check-circle',
-                  rejectLabel: 'Não',
-                  className: 'w-[400px]',
-                  accept: () => {
-                    removeDepartamento(depto.id_departamento)
-                  },
-                  reject: () => { console.log('cancelou') }
-                })
+                  confirmDialog({
+                    header: 'Exclusão de Departamento',
+                    message: `Você deseja remover ${depto.nome}?`,
+                    icon: 'pi pi-info-circle',
+                    draggable: false,
+                    acceptLabel: 'Sim',
+                    acceptClassName: 'p-button-danger',
+                    acceptIcon: 'pi pi-check-circle',
+                    rejectLabel: 'Não',
+                    className: 'w-[400px]',
+                    accept: () => {
+                      removeDepartamento(depto.id_departamento)
+                    },
+                    reject: () => { console.log('cancelou') }
+                  })
 
-              }}
-            />
+                }}
+              />
+            </span>
           )}
         />
       </DataTable>

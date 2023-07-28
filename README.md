@@ -40,6 +40,15 @@ Conteúdo das aulas:
 - [X] Chamada da API de Exclusão
 - [X] Ordenação de Tabela
 
+## Aula 06
+- [X] Correção do exercício
+- [X] Inserção de Registro
+- [X] Rota de edição do Registro
+- [X] API de detalhe do Registro
+
+## Aula 07
+- [ ] Finalização da edição
+
 ---
 ## Links úteis
 ### Videos Interessantes:
