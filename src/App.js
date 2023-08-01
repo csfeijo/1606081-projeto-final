@@ -5,6 +5,7 @@ import Menu from './Components/Menu'
 import Departamentos from './Pages/Departamentos'
 import FormDepartamentos from './Pages/FormDepartamentos'
 
+
 const App = () => {
   return (
     <PrimeReactProvider>

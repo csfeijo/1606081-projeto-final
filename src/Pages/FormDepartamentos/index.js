@@ -1,9 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom' 
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { Message } from 'primereact/message'
-import { insertDepartamento } from '../../services/departamentos'
+import { 
+  getDepartamentoById, 
+  insertDepartamento, 
+  updateDepartamento
+} from '../../services/departamentos'
 
 const FormDepartamentos = () => {
   const { id_departamento } = useParams()
@@ -14,13 +18,12 @@ const FormDepartamentos = () => {
   const [erroNome, setErroNome] = useState(false)
   const [sigla, setSigla] = useState('')
   const [erroSigla, setErroSigla] = useState(false)
-
   const [erro, setErro] = useState('')
+  const [erroCritico, setErroCritico] = useState('')
   
   // Seta as referencias de nodos do form
   const nomeInputRef = useRef(null)
   const siglaInputRef = useRef(null)
-
 
   const formValidate = () => {
     // Primeiro limpa as mensagens de erro
@@ -45,9 +48,13 @@ const FormDepartamentos = () => {
     return true
   }
 
-  const createDepartamento = async () => {
+  const saveDepartamento = async () => {
     try {
-      await insertDepartamento({ nome, sigla })
+      if (id_departamento) {
+        await updateDepartamento({ nome, sigla, id_departamento })
+      } else {
+        await insertDepartamento({ nome, sigla })
+      }
       navigate('/departamentos')
     } catch (e) {
       const { code } = e.response.data.exception
@@ -55,69 +62,112 @@ const FormDepartamentos = () => {
       if (code === 'ER_DUP_ENTRY') {
         setErro('Registro duplicado na base de dados.')
       } else {
-        setErro('Erro na inserção do registro.')
+        const termo = id_departamento ? 'edição' : 'inserção'
+        setErro(`Erro na ${termo} do registro.`)
       }
     }
   }
+
+  const loadDepartamento = async () => {
+    try {
+      const resp = await getDepartamentoById({ id_departamento })
+      
+      const [{ nome, sigla }] = resp.data
+      setNome(nome)
+      setSigla(sigla)
+
+    } catch(e) {
+      navigate('/departamentos')
+    }
+  }
+
+  useEffect(() => {
+    if (id_departamento) {
+      if(isNaN(parseInt(id_departamento))) {
+        setErroCritico('Identificador inválido')
+      } else {
+        loadDepartamento()
+      }
+    }
+  },[])
 
   return (
     <>
       <h1 className='text-xl my-6'>
         <i className='pi pi-plus mr-4'/>
-        {id_departamento ? 'Edição' : 'Cadastro' } de Departamentos
+        {id_departamento ? 'Edição' : 'Cadastro' } de Departamento
       </h1>
     
-      <div className='flex mt-12'>
-
-        <div className="p-float-label w-1/2 pr-2">
-          <InputText 
-            id="nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)} 
-            className={`w-full  !shadow-none  ${erroNome ? 'p-invalid' : ''}`}
-            autoComplete='off'
-            ref={nomeInputRef}
+      {erroCritico !== '' &&
+        <>
+          <Message
+            severity='error'
+            text={erroCritico}
+            className='w-full'
           />
-          <label htmlFor="nome">Nome</label>
+          <Button
+            className='!mt-6'
+            label='Voltar'
+            icon='pi pi-arrow-left'
+            onClick={() => {
+              navigate('/departamentos')
+            }}
+          />
+        </>
+      }
+
+      <div className={erroCritico != '' ? 'hidden' : ''}>
+        <div className='flex mt-12'>
+
+          <div className="p-float-label w-1/2 pr-2">
+            <InputText 
+              id="nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)} 
+              className={`w-full  !shadow-none  ${erroNome ? 'p-invalid' : ''}`}
+              autoComplete='off'
+              ref={nomeInputRef}
+            />
+            <label htmlFor="nome">Nome</label>
+          </div>
+
+          <div className="p-float-label w-1/4">
+            <InputText 
+              id="sigla"
+              value={sigla}
+              onChange={(e) => setSigla(e.target.value)}
+              className={`w-full !shadow-none ${erroSigla ? 'p-invalid' : ''}`}
+              autoComplete='off'
+              ref={siglaInputRef}
+            />
+            <label htmlFor="sigla">Sigla</label>
+          </div>
+
         </div>
 
-        <div className="p-float-label w-1/4">
-          <InputText 
-            id="sigla"
-            value={sigla}
-            onChange={(e) => setSigla(e.target.value)}
-            className={`w-full !shadow-none ${erroSigla ? 'p-invalid' : ''}`}
-            autoComplete='off'
-            ref={siglaInputRef}
+        <div className='flex mt-6'>
+          <Button
+            type='submit'
+            label={id_departamento ? 'Atualizar' : 'Cadastrar' }
+            severity='info'
+            icon='pi pi-check'
+            className='!mr-4'
+            onClick={() => {
+              if(formValidate()) {
+                saveDepartamento()
+              }
+            }}
           />
-          <label htmlFor="sigla">Sigla</label>
-        </div>
 
-      </div>
-
-      <div className='flex mt-6'>
-        <Button
-          type='submit'
-          label='Save'
-          severity='info'
-          icon='pi pi-check'
-          className='!mr-4'
-          onClick={() => {
-            if(formValidate()) {
-              createDepartamento()
-            }
-          }}
-        />
-
-        {erro !== '' &&
+          {erro !== '' &&
           <Message
             severity='error'
             text={erro}
           />
-        }
+          }
+        </div>
+    
       </div>
-    
-    
     </>
   )
 }
