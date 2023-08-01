@@ -70,7 +70,7 @@ const Departamentos = () => {
         className='!absolute top-0 left-0 w-full !h-[2px]'
       />
 
-      <h1 className='text-xl my-6'>
+      <h1 className='text-xl my-6 bg-teste-50'>
         <i className='pi pi-list mr-4'/>
         Listagem de Departamentos
       </h1>
@@ -88,16 +88,18 @@ const Departamentos = () => {
         }}
       >
         <Column
+          headerClassName='w-[60%] sm:w-[50%] md:w-[60%]'
           header='Nome'
           field='nome'
           sortable
         />
         <Column
+          className='hidden sm:table-cell'
+          headerClassName='w-[30%] sm:w-[30%]'
           header='Sigla'
           field='sigla'
           sortable
         />
-
         <Column
           body={(depto) => (
             <span className='p-buttonset'>
