@@ -5,6 +5,9 @@ import Menu from './Components/Menu'
 import Departamentos from './Pages/Departamentos'
 import FormDepartamentos from './Pages/FormDepartamentos'
 
+// habilita o efeito ripple nos botoes
+import PrimeReact from 'primereact/api'
+PrimeReact.ripple = true
 
 const App = () => {
   return (

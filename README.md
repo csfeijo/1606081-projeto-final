@@ -47,7 +47,10 @@ Conteúdo das aulas:
 - [X] API de detalhe do Registro
 
 ## Aula 07
-- [ ] Finalização da edição
+- [X] Finalização da edição
+- [X] Ripple Effect
+- [X] Responsivismo no TailwindCSS - Introdução
+- [X] Customizando o TailwindCSS com Tokens
 
 ---
 ## Links úteis
@@ -68,6 +71,10 @@ Conteúdo das aulas:
 ### Issues
 * [VSCode Settings dando erro de Schema](https://bobbyhadz.com/blog/unable-to-load-schema-from-vscode-cannot-open)
 
+### Freelancer
+* [99freelas](99freelas.com.br)
+* [Crowd](http://crowd.com.br)
+* [Workana](workana.com.br)
 
 ## Setup
 Instalação:
