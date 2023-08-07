@@ -17,7 +17,7 @@ const App = () => {
         <div className='container mx-auto'>
           <Routes>
             <Route path='/'>
-              <Route index element={<h1 className='text-xl my-6'>Bem vindo!</h1>}/>
+              <Route index element={<h1 className='text-xl my-6 bg-orange-500 p-4'>Bem vindo, turma da Live da TT!</h1>}/>
 
               <Route path='departamentos'>
                 <Route index element={<Departamentos/>} />
