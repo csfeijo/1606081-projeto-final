@@ -70,7 +70,7 @@ const Departamentos = () => {
         className='!absolute top-0 left-0 w-full !h-[2px]'
       />
 
-      <h1 className='text-xl my-6 bg-teste-50'>
+      <h1 className='text-xl my-6'>
         <i className='pi pi-list mr-4'/>
         Listagem de Departamentos
       </h1>
